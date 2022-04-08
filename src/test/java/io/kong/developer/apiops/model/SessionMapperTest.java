@@ -28,15 +28,15 @@ class SessionMapperTest {
 
     final io.kong.developer.apiops.model.Session session = mapper.toDomain(generatedSession);
 
-    assertThat(session.getPresenters()).hasSize(1);
+    assertThat(session.getPresenters()).containsOnlyOnce("Viktor Gamov");
   }
 
   @Test
   void mapperShouldTransformArrayOfPresentersToList() {
     io.kong.developer.apiops.model.Session domainSession = new io.kong.developer.apiops.model.Session();
 
-    domainSession.setPresenters(List.of(new Presenter("Viktor", "Gamov")));
+    domainSession.setPresenters("Viktor Gamov");
     final Session session = mapper.toResource(domainSession);
-    assertThat(session.getPresenters()).containsExactly("Viktor Gamov");
+    assertThat(session.getPresenters()).hasSize(1);
   }
 }

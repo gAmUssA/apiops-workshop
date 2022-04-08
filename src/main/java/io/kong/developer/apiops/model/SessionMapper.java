@@ -16,6 +16,7 @@
 
 package io.kong.developer.apiops.model;
 
+import org.apache.commons.lang3.StringUtils;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.MapMapping;
 import org.mapstruct.Mapper;
@@ -31,17 +32,29 @@ import io.kong.developer.generated.devnexus.model.Session;
 @Mapper(componentModel = "spring", injectionStrategy = InjectionStrategy.CONSTRUCTOR)
 public interface SessionMapper {
 
-
-  @Mapping(source = "title", target = "title")
+  @Mappings({
+      @Mapping(target = "isWorkshop", defaultValue = "false")
+  })
   Session toResource(io.kong.developer.apiops.model.Session source);
 
-  default String toResource(Presenter source) {
-    return source.toString();
+  @Mapping(source = "presenters", target = "presenters")
+  default String[] toResource(String source) {
+    final List<String> collect = Stream.of(source.split(","))
+        .map(e -> e.replaceAll("[^a-zA-Z0-9\\s+]", ""))
+        .map(StringUtils::normalizeSpace)
+        .collect(Collectors.toList());
+
+    return (String[]) collect.toArray(String[]::new);
   }
 
   io.kong.developer.apiops.model.Session toDomain(Session session);
 
-  default List<Presenter> toDomain(String[] presenters) {
+  default String toDomain(String[] value) {
+    return Stream.of(value).collect(Collectors.joining(" "));
+
+  }
+
+  /*default List<Presenter> toDomain(String[] presenters) {
     return Stream.of(presenters)
         .map(a -> {
           Presenter p = new Presenter();
@@ -51,6 +64,6 @@ public interface SessionMapper {
           return p;
         })
         .collect(Collectors.toList());
-  }
+  }*/
 
 }

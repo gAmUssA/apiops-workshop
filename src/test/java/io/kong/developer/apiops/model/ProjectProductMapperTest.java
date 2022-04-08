@@ -9,9 +9,10 @@ class ProjectProductMapperTest {
 
   @Test
   void toResource() {
-    final ProjectProductMapper mapper = Mappers.getMapper(ProjectProductMapper.class);
+    final ProductMapper mapper = Mappers.getMapper(ProductMapper.class);
 
-    final Project project = new Project("Kong Gateway",
+    final Product project = new Product(1,
+                                        "Kong Gateway",
                                         "oss",
                                         "Kong or Kong API Gateway is a cloud-native, platform-agnostic, scalable API Gateway distinguished for its high performance and extensibility via plugins.");
 

@@ -1,15 +1,11 @@
 package io.kong.developer.apiops.rest;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDate;
-import java.util.List;
+import io.kong.developer.apiops.data.SessionRepository;
 
-import javax.swing.*;
-
-import io.kong.developer.apiops.service.SessionService;
+import io.kong.developer.apiops.model.SessionMapper;
 import io.kong.developer.generated.devnexus.api.SessionsApi;
 import io.kong.developer.generated.devnexus.model.Session;
 import lombok.RequiredArgsConstructor;
@@ -22,16 +18,19 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class SessionsController implements SessionsApi {
 
-  private final SessionService sessionService;
+  private final SessionRepository sessionRepository;
+  private final SessionMapper mapper;
 
   @Override
   public ResponseEntity<Flux<Session>> listSessions() {
-    return new ResponseEntity<Flux<Session>>(Flux.just(sessionService.getSession()), HttpStatus.OK);
+    return ResponseEntity.ok().body(sessionRepository.findAll()
+                                        .map(mapper::toResource));
   }
 
   @Override
   public ResponseEntity<Mono<Session>> getSession(final String id) {
-    final Session session = sessionService.getSession();
-    return new ResponseEntity<Mono<Session>>(Mono.just(session), HttpStatus.OK);
+    return ResponseEntity.ok().body(sessionRepository.findById(Integer.parseInt(id))
+                                        .switchIfEmpty(Mono.error(new UnknownSessionException()))
+                                        .map(mapper::toResource));
   }
 }
