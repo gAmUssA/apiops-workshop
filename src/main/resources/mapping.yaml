@@ -1,0 +1,16 @@
+openapi-processor-mapping: v2
+
+options:
+  package-name: io.kong.developer.generated.devnexus
+  
+  # generate javadoc from OpenAPI description properties
+  javadoc: true
+
+map:
+  result: org.springframework.http.ResponseEntity
+  
+  single: reactor.core.publisher.Mono
+  multi: reactor.core.publisher.Flux
+
+  #types:
+   # - type: array => java.util.List
