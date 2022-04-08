@@ -71,6 +71,60 @@ paths:
         in: path
         required: true
         description: The ID of session to load
+  /products:
+    get:
+      summary: List Kong products
+      tags:
+        - product
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                description: "List of kong products matching the provided filters"
+                uniqueItems: true
+                items:
+                  $ref: "#/components/schemas/Product"
+              examples:
+                success:
+                  value:
+                    - name: Gateway
+                      type: oss
+                      description: Kong or Kong API Gateway is a cloud-native, platform-agnostic, scalable API Gateway distinguished for its high performance and extensibility via plugins.
+                    - name: Insomnia
+                      type: oss
+                      description: Insomnia is an open-source, cross-platform API Client for GraphQL, REST, and gRPC.
+                    - name: Developer Portal
+                      type: enterprise
+                      description: The Kong Developer Portal provides a single source of truth for all developers to locate, access, and consume services. With intuitive content management for documentation, streamlined developer onboarding, and role-based access control (RBAC), Kong’s Developer Portal provides a comprehensive solution for creating and customizing a unified developer experience.
+                no-products:
+                  value: [ ]
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              examples:
+                invalid-type:
+                  value:
+                    type: "https://docs.konghq.com/problem/summit/invalid-type"
+                    title: Invalid type provided
+                    detail: "[ee] is an invalid value. Possible values: [oss, enterprise]"
+                    instance: "t:beQpT0Hn"
+      operationId: list-products
+      parameters:
+        - schema:
+            type: string
+            enum:
+              - oss
+              - enterprise
+          in: query
+          name: type
+          description: Only show products that match the provided `type`
+      description: Fetch information about the products that Kong offer.
 
 components:
   schemas:
@@ -117,4 +171,18 @@ components:
         - type
         - title
         - instance
+    Product:
+      description: A product that Kong offers
+      type: object
+      required:
+        - name
+        - type
+        - description
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+        description:
+          type: string
   
