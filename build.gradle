@@ -3,7 +3,9 @@ plugins {
   id 'io.spring.dependency-management' version '1.0.11.RELEASE'
   id 'java'
   id 'idea'
-  id 'org.springframework.experimental.aot' version '0.11.4'
+  // incompatible with 2.7.0-M3 
+  // TODO: check later
+  // id 'org.springframework.experimental.aot' version '0.11.4'
   id 'de.undercouch.download' version '5.0.4'
   id 'io.openapiprocessor.openapi-processor' version '2022.1'
 }
