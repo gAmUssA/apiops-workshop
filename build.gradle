@@ -52,7 +52,7 @@ tasks.named('test') {
 
 tasks.named('bootBuildImage') {
   builder = 'paketobuildpacks/builder:tiny'
-  environment = ['BP_NATIVE_IMAGE': 'true']
+  //environment = ['BP_NATIVE_IMAGE': 'true']
 }
 
 /* TODO: make API spec available in GH */
@@ -96,4 +96,5 @@ compileJava.dependsOn('processSpring')
 
 springBoot {
   mainClass = "io.kong.developer.apiops.APIOpsWorkshopApplication"
+  buildInfo()
 }
