@@ -16,7 +16,7 @@ jobs:
         with:
           deck-version: "1.11.0"
       - name: clone repo
-        uses: actions/checkout@2
+        uses: actions/checkout@v2
       - name: Run decK deck-sync
         env:
           DECK-EMAIL: ${{ secrets.DECK_EMAIL }}
