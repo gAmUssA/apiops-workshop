@@ -1,6 +1,9 @@
 name: Action on Pull Reqest to run deploy of api config
 
 on:
+  push:
+    tags:
+      - main
   pull_request:
     branches:
       - main
