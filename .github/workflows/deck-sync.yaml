@@ -2,7 +2,7 @@ name: Action on Pull Reqest to run deploy of api config
 
 on:
   push:
-    tags:
+    branches:
       - main
   pull_request:
     branches:
