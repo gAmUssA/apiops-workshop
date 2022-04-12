@@ -1,0 +1,21 @@
+name: Action on Pull Reqest to run deploy of api config
+
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  deck-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: setup decK
+        uses: kong/setup-deck@v1
+        with:
+          deck-version: "1.11.0"
+      - name: clone repo
+        uses: actions/checkout@2
+      - name: Run decK deck-sync
+        env:
+          DECK-EMAIL: ${{ secrets.DECK_EMAIL }}
+          DECK-PASS: ${{ secrets.DECK_PASS }}
+        run: deck konnect ping --konnect-email $DECK-EMAIL --konnect-password $DECK-PASS
