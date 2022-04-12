@@ -4,9 +4,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.kong.developer.apiops.data.ProductRepository;
-import io.kong.developer.apiops.model.Product;
 import io.kong.developer.apiops.model.ProductMapper;
 import io.kong.developer.generated.devnexus.api.ProductApi;
+import io.kong.developer.generated.devnexus.model.Product;
 import io.kong.developer.generated.devnexus.model.Type;
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Flux;
@@ -19,24 +19,12 @@ public class ProductController implements ProductApi {
   
   private final ProductRepository repository;
 
+  /* TODO: make method to find products by type */
   @Override
-  public ResponseEntity<Flux<io.kong.developer.generated.devnexus.model.Product>> listProducts(final Type type) {
+  public ResponseEntity<Flux<Product>> listProducts(final Type type) {
 
-    final Flux<Product> all = repository.findAll();
-/*
-    Project kongGateway = Project.builder()
-        .name("Kong Gateway")
-        .type("oss")
-        .description("Kong or Kong API Gateway is a cloud-native, platform-agnostic, scalable API Gateway distinguished for its high performance and extensibility via plugins.")
-        .build();
-
-    Project insomnia = Project.builder()
-        .name("Insomnia")
-        .description("Insomnia is an open-source, cross-platform API Client for GraphQL, REST, and gRPC.")
-        .type("oss")
-        .build();
-*/
-
+    final Flux<io.kong.developer.apiops.model.Product> all = repository.findAll();
+    
     return ResponseEntity.ok().body(all.map(mapper::toResource));
   }
 }

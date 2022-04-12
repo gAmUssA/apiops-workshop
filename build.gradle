@@ -3,11 +3,11 @@ plugins {
   id 'io.spring.dependency-management' version '1.0.11.RELEASE'
   id 'java'
   id 'idea'
-  // incompatible with 2.7.0-M3 
-  // TODO: check later
+  // TODO: check later - AOP plugin incompatible with 2.7.0-M3
   // id 'org.springframework.experimental.aot' version '0.11.4'
   id 'de.undercouch.download' version '5.0.4'
   id 'io.openapiprocessor.openapi-processor' version '2022.1'
+  id 'com.gorylenko.gradle-git-properties' version '2.4.0'
 }
 
 group = 'io.kong.developer'
@@ -15,8 +15,9 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
 springBoot {
+  mainClass = "io.kong.developer.apiops.APIOpsWorkshopApplication"
+  buildInfo()
 }
-
 repositories {
   maven { url 'https://repo.spring.io/release' }
   maven { url 'https://repo.spring.io/milestone' }
@@ -30,7 +31,7 @@ dependencies {
   implementation 'org.mapstruct:mapstruct:1.4.2.Final'
   implementation 'org.apache.commons:commons-lang3:3.12.0'
   annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
-  annotationProcessor "org.projectlombok:lombok-mapstruct-binding:0.1.0"
+  annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
 
   runtimeOnly 'com.h2database:h2'
   runtimeOnly 'io.r2dbc:r2dbc-h2'
@@ -41,7 +42,7 @@ dependencies {
   testImplementation 'org.springframework.boot:spring-boot-starter-test'
   testImplementation 'io.projectreactor:reactor-test'
 
-  testImplementation 'org.assertj:assertj-core:3.21.0'
+  testImplementation 'org.assertj:assertj-core:3.22.0'
   // If you are using mapstruct in test code
   testAnnotationProcessor "org.mapstruct:mapstruct-processor:1.4.2.Final"
 }
@@ -93,8 +94,3 @@ sourceSets {
 }
 
 compileJava.dependsOn('processSpring')
-
-springBoot {
-  mainClass = "io.kong.developer.apiops.APIOpsWorkshopApplication"
-  buildInfo()
-}

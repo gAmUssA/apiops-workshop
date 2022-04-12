@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.0.2
 info:
   title: "Devnexus APIOps Workshop"
   version: "1.0.0"
@@ -9,7 +9,7 @@ info:
   description: Devnexus Conference API
   termsOfService: https://konghq.com/terms/
 servers:
-  - url: "https://devnexus.kongproxy.me"
+  - url: "https://apiops.kongproxy.me"
 tags:
   - name: session
     description: session object
@@ -28,6 +28,19 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Session"
+              examples:
+                success:
+                  value:
+                    - title: Supercharge your Ingress with Kong
+                      description: During this talk, you will learn how to declaratively enable security, API rate limiting, how to add native gRPC support using Kong Gateway and plugins.
+                      presenters:
+                        - Viktor Gamov
+                    - title: API design and APIOps
+                      description: Building an API is just the first step. You also need to deploy that API and help your customers onboard to drive API consumption. Design APIs in Insomnia, generate configurations for Kong Gateway, and publish REST, GraphQL, and gRPC services to the Kong Dev Portal to enable your audience. In this workshop, we will go through all steps of the API Management cycle - from designing API specifications to publishing APIs for public consumption.
+                      isWorkshop: true
+                      presenters:
+                        - Viktor Gamov
+  
   "/sessions/{id}":
     get:
       operationId: getSession
