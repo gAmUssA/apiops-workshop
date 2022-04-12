@@ -19,6 +19,6 @@ jobs:
         uses: actions/checkout@v2
       - name: Run decK deck-sync
         env:
-          DECK_EMAIL: ${{ secrets.DECK_EMAIL }}
-          DECK_PASS: ${{ secrets.DECK_PASS }}
-        run: deck konnect ping --konnect-email $DECK_EMAIL --konnect-password $DECK_PASS
+          DECK_KONNECT_EMAIL: ${{ secrets.DECK_EMAIL }}
+          DECK_KONNECT_PASSWORD: ${{ secrets.DECK_PASS }}
+        run: deck konnect ping
