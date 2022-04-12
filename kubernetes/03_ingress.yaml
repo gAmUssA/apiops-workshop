@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/tls-acme: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    external-dns.alpha.kubernetes.io/hostname: apiops.kongproxy.me
+  name: apiops
+spec:
+  ingressClassName: kong
+  tls:
+    - secretName: apiops-kongproxy-me
+      hosts:
+        - apiops.kongproxy.me
+  rules:
+    - host: apiops.kongproxy.me
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: apiops-workshop
+                port:
+                  number: 8080

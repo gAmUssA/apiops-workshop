@@ -1,10 +1,7 @@
-name: Action on Pull Reqest to run deploy of api config
+name: decK action to deploy of api config using Konnect
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
     branches:
       - main
 jobs:

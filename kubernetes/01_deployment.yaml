@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/version: 0.0.1-SNAPSHOT
+    app.kubernetes.io/name: apiops-workshop
+  name: apiops-workshop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/version: 0.0.1-SNAPSHOT
+      app.kubernetes.io/name: apiops-workshop
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/version: 0.0.1-SNAPSHOT
+        app.kubernetes.io/name: apiops-workshop
+    spec:
+      containers:
+        - env:
+            - name: KUBERNETES_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+          image: gamussa/apiops-workshop:0.0.1-SNAPSHOT
+          imagePullPolicy: Always
+          name: apiops-workshop
+          ports:
+            - containerPort: 8080
+              name: web
+              protocol: TCP
