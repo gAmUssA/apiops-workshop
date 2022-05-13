@@ -47,6 +47,7 @@ public interface SessionMapper {
     return (String[]) collect.toArray(String[]::new);
   }
 
+  @Mapping(target = "id", ignore = true)
   io.kong.developer.apiops.model.Session toDomain(Session session);
 
   default String toDomain(String[] value) {

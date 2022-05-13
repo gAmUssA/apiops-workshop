@@ -51,6 +51,6 @@ public class ProductsWebTest {
     webTestClient.get()
         .uri("/products?type=blah")
         .exchange()
-        .expectStatus().isNotFound().expectStatus().isBadRequest();
+        .expectStatus().isBadRequest();
   }
 }

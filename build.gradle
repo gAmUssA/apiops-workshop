@@ -1,13 +1,13 @@
 plugins {
-  id 'org.springframework.boot' version '2.7.0-M3'
+  id 'org.springframework.boot' version '2.7.0-RC1'
   id 'io.spring.dependency-management' version '1.0.11.RELEASE'
   id 'java'
   id 'idea'
   // TODO: check later - AOP plugin incompatible with 2.7.0-M3
   // id 'org.springframework.experimental.aot' version '0.11.4'
-  id 'de.undercouch.download' version '5.0.4'
+  id 'de.undercouch.download' version '5.1.0'
   id 'io.openapiprocessor.openapi-processor' version '2022.1'
-  id 'com.gorylenko.gradle-git-properties' version '2.4.0'
+  id 'com.gorylenko.gradle-git-properties' version '2.4.1'
 }
 
 group = 'io.kong.developer'
