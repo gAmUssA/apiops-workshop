@@ -11,20 +11,21 @@ import io.kong.developer.generated.devnexus.model.Type;
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Flux;
 
+import static org.springframework.http.ResponseEntity.*;
+
 @RestController
 @RequiredArgsConstructor
 public class ProductController implements ProductApi {
 
   private final ProductMapper mapper;
-  
+
   private final ProductRepository repository;
 
-  /* TODO: make method to find products by type */
   @Override
   public ResponseEntity<Flux<Product>> listProducts(final Type type) {
-
-    final Flux<io.kong.developer.apiops.model.Product> all = repository.findAll();
-    
-    return ResponseEntity.ok().body(all.map(mapper::toResource));
+    if (type != null) {
+      return ok().body(repository.findAllByType(type.getValue()).map(mapper::toResource));
+    }
+    return ok().body(repository.findAll().map(mapper::toResource));
   }
 }
