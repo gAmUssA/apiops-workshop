@@ -19,8 +19,8 @@ jobs:
           DECK_KONNECT_EMAIL: ${{ secrets.DECK_EMAIL }}
           DECK_KONNECT_PASSWORD: ${{ secrets.DECK_PASS }}
         run: |
-          deck konnect ping
-          deck konnect diff
+          deck ping
+          deck diff
 
   deck-sync:
     needs: deck-diff
@@ -38,4 +38,4 @@ jobs:
           DECK_KONNECT_EMAIL: ${{ secrets.DECK_EMAIL }}
           DECK_KONNECT_PASSWORD: ${{ secrets.DECK_PASS }}
         run: |
-          deck konnect sync
+          deck sync
