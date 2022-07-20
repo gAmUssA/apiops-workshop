@@ -4,8 +4,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
 
-import java.util.List;
-
 import io.kong.developer.generated.devnexus.model.Session;
 
 import static org.assertj.core.api.Assertions.assertThat;

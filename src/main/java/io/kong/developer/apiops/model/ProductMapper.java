@@ -4,11 +4,15 @@ package io.kong.developer.apiops.model;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.ReportingPolicy;
 import org.springframework.util.StringUtils;
 
 import java.util.Locale;
 
-@Mapper(componentModel = "spring", injectionStrategy = InjectionStrategy.CONSTRUCTOR)
+@Mapper(
+    componentModel = "spring",
+    injectionStrategy = InjectionStrategy.CONSTRUCTOR,
+    unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface ProductMapper {
 
   io.kong.developer.generated.devnexus.model.Product toResource(Product project);

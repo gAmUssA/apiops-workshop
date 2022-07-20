@@ -14,7 +14,7 @@ jobs:
         working-directory: ./
     runs-on: ubuntu-latest
     
-    name: Build (jar and docker) APIOps Demo APp
+    name: Build (jar and docker) API DevOps (APIOps) Demo App
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 11

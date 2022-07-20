@@ -6,6 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.reactive.server.EntityExchangeResult;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
+import io.kong.developer.apiops.testcontainers.AbstractTestcontainersTest;
 import io.kong.developer.generated.devnexus.model.Session;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -13,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class PodsWebFilterTest {
+class PodsWebFilterTest extends AbstractTestcontainersTest {
 
   @Autowired
   private WebTestClient webTestClient;

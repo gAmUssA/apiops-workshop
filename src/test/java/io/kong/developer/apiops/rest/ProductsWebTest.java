@@ -8,18 +8,18 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 
 import java.util.List;
 
+import io.kong.developer.apiops.testcontainers.AbstractTestcontainersTest;
 import io.kong.developer.generated.devnexus.model.Product;
 import io.kong.developer.generated.devnexus.model.Session;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class ProductsWebTest {
+public class ProductsWebTest extends AbstractTestcontainersTest {
 
   @Autowired
   private WebTestClient webTestClient;
-
-
+  
   @Test
   public void shouldReturnTwoOSSProducts() {
     final EntityExchangeResult<List<Product>> result = webTestClient.get()
