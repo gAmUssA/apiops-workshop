@@ -1,0 +1,6 @@
+query productsByType($productType: String!){
+    productsByType(type: $productType){
+        name
+        description
+    }
+}

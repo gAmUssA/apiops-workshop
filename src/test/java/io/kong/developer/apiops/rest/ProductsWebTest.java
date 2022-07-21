@@ -10,7 +10,6 @@ import java.util.List;
 
 import io.kong.developer.apiops.testcontainers.AbstractTestcontainersTest;
 import io.kong.developer.generated.devnexus.model.Product;
-import io.kong.developer.generated.devnexus.model.Session;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -19,9 +18,9 @@ public class ProductsWebTest extends AbstractTestcontainersTest {
 
   @Autowired
   private WebTestClient webTestClient;
-  
+
   @Test
-  public void shouldReturnTwoOSSProducts() {
+  public void shouldReturnThreeOSSProducts() {
     final EntityExchangeResult<List<Product>> result = webTestClient.get()
         .uri("/products?type=oss")
         .exchange()
@@ -29,12 +28,12 @@ public class ProductsWebTest extends AbstractTestcontainersTest {
         .expectBodyList(Product.class)
         .returnResult();
 
-    assertThat(result.getResponseBody()).hasSize(2);
+    assertThat(result.getResponseBody()).hasSize(3);
 
   }
 
   @Test
-  public void shouldReturnOneEnterpriseProduct() {
+  public void shouldReturnTwoEnterpriseProduct() {
     final EntityExchangeResult<List<Product>> result = webTestClient.get()
         .uri("/products?type=enterprise")
         .exchange()
@@ -42,7 +41,7 @@ public class ProductsWebTest extends AbstractTestcontainersTest {
         .expectBodyList(Product.class)
         .returnResult();
 
-    assertThat(result.getResponseBody()).hasSize(1);
+    assertThat(result.getResponseBody()).hasSize(2);
 
   }
 

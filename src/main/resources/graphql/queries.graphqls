@@ -1,0 +1,19 @@
+type Query{
+    "List of Kong products"
+    products: [Product]
+
+    "List of Kong products matching the provided filters"
+    productsByType(type: String!): [Product]
+}
+
+
+type Product {
+    name: String
+    type: String
+    description: String
+}
+
+enum Type {
+    enterprise
+    oss
+}

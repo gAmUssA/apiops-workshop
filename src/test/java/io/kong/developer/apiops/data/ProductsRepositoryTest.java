@@ -15,19 +15,19 @@ public class ProductsRepositoryTest extends AbstractTestcontainersTest {
   private ProductRepository repository;
 
   @Test
-  @DisplayName("should return three products")
+  @DisplayName("should return five products")
   public void repoTest() {
     create(repository.count())
-        .assertNext(count -> assertThat(count).isEqualTo(3))
+        .assertNext(count -> assertThat(count).isEqualTo(5))
         .expectComplete()
         .verify();
   }
 
   @Test
-  @DisplayName("should return two OSS products")
-  public void restTest2() {
+  @DisplayName("should return three OSS products")
+  public void restTest3() {
     create(repository.countByType("oss"))
-        .assertNext(count -> assertThat(count).isEqualTo(2))
+        .assertNext(count -> assertThat(count).isEqualTo(3))
         .expectComplete()
         .verify();
   }
