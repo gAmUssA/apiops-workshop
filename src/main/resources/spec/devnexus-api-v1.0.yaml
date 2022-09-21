@@ -9,7 +9,7 @@ info:
   description: Devnexus Conference API
   termsOfService: https://konghq.com/terms/
 servers:
-  - url: "https://apiops.kongproxy.me"
+  - url: "https://apiops.kong.builders"
 tags:
   - name: session
     description: session object
