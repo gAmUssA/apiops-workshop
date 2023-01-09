@@ -87,7 +87,7 @@ tasks.named('bootBuildImage') {
 
 openapiProcessor {
   spring {
-    processor 'io.openapiprocessor:openapi-processor-spring:2022.4'
+    processor 'io.openapiprocessor:openapi-processor-spring:2023.1.1'
     apiPath "$projectDir/src/main/resources/spec/devnexus-api-v1.0.yaml"
     targetDir "$projectDir/build/openapi"
     mapping "$projectDir/src/main/resources/mapping.yaml"
