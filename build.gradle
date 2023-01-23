@@ -46,7 +46,7 @@ dependencies {
   testCompileOnly 'org.projectlombok:lombok'
   
   testImplementation 'io.projectreactor:reactor-test'
-  testImplementation 'org.assertj:assertj-core:3.23.1'
+  testImplementation 'org.assertj:assertj-core:3.24.2'
   testImplementation 'org.springframework.boot:spring-boot-starter-test'
   testImplementation 'org.springframework.graphql:spring-graphql-test'
   testImplementation 'org.testcontainers:postgresql:1.17.3'
