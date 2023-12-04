@@ -13,10 +13,15 @@ servers:
   - url: "http://apiops-workshop.default.svc.cluster.local:8080"
 tags:
   - name: session
-    description: session object
+    description: 'session object'
+  - name: sessions
+    description: a list of session
+  - name: product
+    description: product object
 paths:
   /sessions:
     get:
+      description: The list of all breakout sessions
       summary: Get a list of breakout sessions
       operationId: listSessions
       tags: [ 'sessions' ]
@@ -199,4 +204,3 @@ components:
           type: string
         description:
           type: string
-  

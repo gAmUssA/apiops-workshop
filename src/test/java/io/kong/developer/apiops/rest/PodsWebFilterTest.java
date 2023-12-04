@@ -10,7 +10,6 @@ import io.kong.developer.apiops.testcontainers.AbstractTestcontainersTest;
 import io.kong.developer.generated.devnexus.model.Session;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
