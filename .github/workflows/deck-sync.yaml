@@ -38,4 +38,5 @@ jobs:
         env:
           DECK_KONNECT_TOKEN: ${{ secrets.DECK_PAT }}
         run: |
+          cd ./konnect
           deck sync
