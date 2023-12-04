@@ -1,0 +1,15 @@
+= APIOps with decK and Kong
+ <>
+v1.0, 2023-12-04
+:toc:
+:imagesdir: assets/images
+:homepage: http://asciidoctor.org
+
+* *API Lifecycle Automation:* The talk focuses on automating the API lifecycle using APIOps, integrating DevOps and GitOps philosophies to improve delivery speed and quality at scale. 
+It emphasizes how this automation can streamline processes, reduce manual errors, and enhance efficiency in API development and deployment.
+* *Challenges in Manual API Management:* The transcript highlights the problems of manual API management, such as delayed reviews, inconsistency in standards, and poor communication. 
+These issues not only slow down the development process but also affect morale and increase the risk of errors and compliance issues.
+* *APIOps Approach:* APIOps proposes a solution to these challenges by automating the entire API lifecycle. 
+This includes instant validation at the design stage, automatic governance checks, and declarative deployments, leading to quicker, more consistent, and error-free API development and management.
+* *Outcomes and Benefits:* Adopting APIOps leads to faster deployment, higher quality APIs, and reduced workload for teams. 
+The case of Emily at Acme illustrates how APIOps can transform the API development process, making it more efficient and less frustrating, while also ensuring compliance and security.
