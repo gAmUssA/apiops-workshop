@@ -11,16 +11,16 @@ jobs:
       - name: setup decK
         uses: kong/setup-deck@v1
         with:
-          deck-version: "1.13.0"
+          deck-version: "1.29.2"
       - name: clone repo
         uses: actions/checkout@v2
       - name: Run decK deck-sync
         env:
-          DECK_KONNECT_EMAIL: ${{ secrets.DECK_EMAIL }}
-          DECK_KONNECT_PASSWORD: ${{ secrets.DECK_PASS }}
+          DECK_KONNECT_TOKEN: ${{ secrets.DECK_PAT }}
         run: |
           deck ping
-          # deck diff
+          cat ./src/main/resources/spec/conference-api-v1.0.yaml| deck file openapi2kong > kong.yaml
+          deck diff
 
   deck-sync:
     needs: deck-diff
@@ -30,12 +30,11 @@ jobs:
       - name: setup decK
         uses: kong/setup-deck@v1
         with:
-          deck-version: "1.11.0"
+          deck-version: "1.29.2"
       - name: clone repo
         uses: actions/checkout@v2
       - name: Run decK deck-sync
         env:
-          DECK_KONNECT_EMAIL: ${{ secrets.DECK_EMAIL }}
-          DECK_KONNECT_PASSWORD: ${{ secrets.DECK_PASS }}
+          DECK_KONNECT_TOKEN: ${{ secrets.DECK_PAT }}
         run: |
           deck sync
