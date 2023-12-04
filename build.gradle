@@ -74,7 +74,7 @@ tasks.named('test') {
 }
 
 tasks.named('bootBuildImage') {
-  builder = 'paketobuildpacks/builder:tiny'
+  builder = 'dashaun/builder:tiny'
   //environment = ['BP_NATIVE_IMAGE': 'true']
 }
 
