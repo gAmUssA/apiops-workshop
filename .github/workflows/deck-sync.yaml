@@ -19,7 +19,7 @@ jobs:
           DECK_KONNECT_TOKEN: ${{ secrets.DECK_PAT }}
         run: |
           deck gateway ping --konnect-control-plane-name="apiops-demo"
-          cat ./src/main/resources/spec/conference-api-v1.0.yaml| deck file openapi2kong > kong.yaml
+          cat ./src/main/resources/spec/conference-api-v1.0.yaml| deck file openapi2kong > ./konnect/kong.yaml
           deck gateway diff --konnect-control-plane-name="apiops-demo"
 
   deck-sync:
