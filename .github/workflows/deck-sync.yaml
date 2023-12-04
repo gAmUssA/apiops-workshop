@@ -40,4 +40,4 @@ jobs:
         run: |
           cat ./src/main/resources/spec/conference-api-v1.0.yaml| deck file openapi2kong > ./konnect/kong.yaml
           cd ./konnect
-          deck sync
+          deck sync --konnect-control-plane-name="apiops-demo"
