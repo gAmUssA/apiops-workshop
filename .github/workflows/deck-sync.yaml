@@ -38,5 +38,6 @@ jobs:
         env:
           DECK_KONNECT_TOKEN: ${{ secrets.DECK_PAT }}
         run: |
+          cat ./src/main/resources/spec/conference-api-v1.0.yaml| deck file openapi2kong > ./konnect/kong.yaml
           cd ./konnect
           deck sync
