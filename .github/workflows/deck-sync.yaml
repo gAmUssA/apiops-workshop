@@ -14,13 +14,13 @@ jobs:
           deck-version: "1.29.2"
       - name: clone repo
         uses: actions/checkout@v2
-      - name: Run decK deck-sync
+      - name: Run decK ping and diff
         env:
           DECK_KONNECT_TOKEN: ${{ secrets.DECK_PAT }}
         run: |
-          deck ping
+          deck gateway ping --konnect-control-plane-name="apiops-demo"
           cat ./src/main/resources/spec/conference-api-v1.0.yaml| deck file openapi2kong > kong.yaml
-          deck diff
+          deck gateway diff --konnect-control-plane-name="apiops-demo"
 
   deck-sync:
     needs: deck-diff
