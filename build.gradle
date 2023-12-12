@@ -27,7 +27,7 @@ repositories {
 
 dependencies {
   // If you are using mapstruct in test code
-  annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.2.Final'
+  annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
   annotationProcessor 'org.projectlombok:lombok'
   annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
 
